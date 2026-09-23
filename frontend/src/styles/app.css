@@ -166,3 +166,281 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+/* ---------- 顶部导航 ---------- */
+.topnav {
+  display: flex;
+  gap: 8px;
+}
+
+.nav-link {
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, #19212e 16%, transparent);
+  color: #19212e;
+  text-decoration: none;
+  font-weight: 700;
+  background: color-mix(in srgb, #f4f7fb 70%, white 30%);
+  transition: all 0.15s ease;
+}
+
+.nav-link:hover {
+  border-color: #3268b8;
+  color: #3268b8;
+}
+
+.nav-link.active {
+  background: #3268b8;
+  border-color: #3268b8;
+  color: #fff;
+}
+
+.page-crumb {
+  width: min(1180px, calc(100vw - 32px));
+  margin: 18px auto 0;
+  font-size: 13px;
+  color: color-mix(in srgb, #19212e 55%, transparent);
+}
+
+/* ---------- 组局拼车页 ---------- */
+.sessions-layout {
+  display: grid;
+  grid-template-columns: 340px minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.sessions-side {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: sticky;
+  top: 18px;
+}
+
+.publish-card,
+.stat-card,
+.session-card {
+  border-radius: 10px;
+  border: 1px solid color-mix(in srgb, #19212e 13%, transparent);
+  background: color-mix(in srgb, #f4f7fb 86%, white 14%);
+}
+
+.publish-card :deep(.el-card__header) {
+  padding: 14px 18px;
+}
+
+.card-sub {
+  margin-left: 10px;
+  font-size: 12px;
+  font-weight: 400;
+  color: color-mix(in srgb, #19212e 55%, transparent);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.form-hint {
+  margin-left: 12px;
+  font-size: 12px;
+  color: color-mix(in srgb, #19212e 55%, transparent);
+}
+
+.stat-card :deep(.el-card__body) {
+  padding: 18px;
+}
+
+.stat-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 14px;
+}
+
+.stat-row strong {
+  font-size: 18px;
+  color: #3268b8;
+}
+
+.sessions-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.sessions-toolbar h2 {
+  margin: 0;
+}
+
+.session-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.session-card {
+  box-shadow: 0 10px 30px color-mix(in srgb, #19212e 7%, transparent);
+}
+
+.session-card.is-closed {
+  opacity: 0.82;
+}
+
+.session-card.is-closed :deep(.el-card__body) {
+  background: color-mix(in srgb, #19212e 3%, transparent);
+  border-radius: 10px;
+}
+
+.session-head {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 14px;
+  border-bottom: 1px dashed color-mix(in srgb, #19212e 18%, transparent);
+}
+
+.session-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.session-title h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.session-meta {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: color-mix(in srgb, #19212e 72%, transparent);
+  font-size: 14px;
+  flex-wrap: wrap;
+}
+
+.capacity-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.roster {
+  padding: 14px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.roster-label {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.roster-label em {
+  font-style: normal;
+  color: #3268b8;
+  margin: 0 2px;
+}
+
+.roster-hint {
+  margin-left: 8px;
+  font-size: 12px;
+  font-weight: 400;
+  color: #cf5c36;
+}
+
+.roster-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.roster-item {
+  display: grid;
+  grid-template-columns: minmax(160px, 1.4fr) 130px minmax(120px, 0.8fr) 56px;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.roster-item.is-confirmed {
+  background: color-mix(in srgb, #3268b8 7%, transparent);
+}
+
+.roster-item.is-waiting {
+  background: color-mix(in srgb, #cf5c36 8%, transparent);
+}
+
+.roster-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  min-width: 0;
+}
+
+.roster-phone {
+  font-variant-numeric: tabular-nums;
+  color: color-mix(in srgb, #19212e 70%, transparent);
+}
+
+.roster-time {
+  font-size: 12px;
+  color: color-mix(in srgb, #19212e 50%, transparent);
+}
+
+.session-actions {
+  display: flex;
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 1px dashed color-mix(in srgb, #19212e 18%, transparent);
+  flex-wrap: wrap;
+}
+
+.register-meta {
+  margin: 0 0 14px;
+  font-size: 14px;
+  color: color-mix(in srgb, #19212e 75%, transparent);
+}
+
+.register-tip {
+  margin: 8px 0 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: color-mix(in srgb, #cf5c36 10%, transparent);
+  font-size: 13px;
+  color: #cf5c36;
+}
+
+@media (max-width: 960px) {
+  .sessions-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sessions-side {
+    position: static;
+  }
+
+  .roster-item {
+    grid-template-columns: 1fr auto;
+  }
+
+  .roster-phone,
+  .roster-time {
+    grid-column: 1;
+  }
+}

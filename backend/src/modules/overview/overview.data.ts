@@ -13,9 +13,9 @@ export const overviewData = {
     {
       "id": 2,
       "title": "组局拼车与缺人招募",
-      "description": "玩家发起组局（选择桌游、时间、人数），发布到拼车广场招募队友，其他玩家可报名加入，满员后自动锁定。",
-      "status": "排期中",
-      "metric": "31 单"
+      "description": "玩家发起组局（选择桌游、时间、人数），发布到拼车广场招募队友，其他玩家可报名加入，满员后自动进入候补，有人退出按序自动转正。",
+      "status": "已上线",
+      "metric": "候补队列"
     },
     {
       "id": 3,
@@ -78,8 +78,8 @@ export const overviewData = {
       "key": "lpboardgame-2",
       "name": "组局拼车与缺人招募",
       "owner": "管理员",
-      "status": "排期中",
-      "metric": "31 单",
+      "status": "已上线",
+      "metric": "候补队列",
       "priority": "中"
     },
     {

@@ -1,29 +1,31 @@
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
-import { fetchOverview } from "./api/client";
+import { computed, ref, watch } from "vue";
+import { routes, type AppPath } from "./routes";
 import { APP_CODE, APP_NAME } from "./constants/app";
-import { REQUEST_MESSAGES } from "./constants/messages";
-import { createFallbackOverview } from "./state/dashboard";
-import type { OverviewResponse } from "./types";
-import FeatureStrip from "./components/FeatureStrip.vue";
-import MetricGrid from "./components/MetricGrid.vue";
-import OperationsTable from "./components/OperationsTable.vue";
+import OverviewView from "./views/OverviewView.vue";
+import SessionsView from "./views/SessionsView.vue";
 
-const overview = ref<OverviewResponse>(createFallbackOverview());
-const notice = ref(REQUEST_MESSAGES.overviewFallback);
-
-function goHealth() {
-  window.location.href = REQUEST_MESSAGES.healthPath;
+function initialPath(): AppPath {
+  const hash = window.location.hash.replace(/^#/, "");
+  return routes.some((route) => route.path === hash) ? (hash as AppPath) : "/";
 }
 
-onMounted(async () => {
-  try {
-    overview.value = await fetchOverview();
-    notice.value = "后端服务已联通，当前展示实时接口数据。";
-  } catch {
-    notice.value = REQUEST_MESSAGES.overviewFallback;
+const currentPath = ref<AppPath>(initialPath());
+
+watch(currentPath, (path) => {
+  window.location.hash = path;
+});
+
+window.addEventListener("hashchange", () => {
+  const hash = window.location.hash.replace(/^#/, "");
+  if (routes.some((route) => route.path === hash)) {
+    currentPath.value = hash as AppPath;
   }
 });
+
+const currentLabel = computed(
+  () => routes.find((route) => route.path === currentPath.value)?.label ?? "",
+);
 </script>
 
 <template>
@@ -33,22 +35,23 @@ onMounted(async () => {
         <span class="brand-code">{{ APP_CODE }}</span>
         <h1 class="brand-title">{{ APP_NAME }}</h1>
       </div>
-      <el-button type="primary" @click="goHealth">API Health</el-button>
+      <nav class="topnav">
+        <a
+          v-for="route in routes"
+          :key="route.path"
+          :href="`#${route.path}`"
+          class="nav-link"
+          :class="{ active: route.path === currentPath }"
+          @click.prevent="currentPath = route.path"
+        >
+          {{ route.label }}
+        </a>
+      </nav>
     </header>
-    <section class="workspace">
-      <div class="lead-grid">
-        <article class="hero-panel">
-          <span class="pill">{{ notice }}</span>
-          <h2>{{ overview.appName }}</h2>
-          <p>{{ overview.description }}</p>
-        </article>
-        <MetricGrid :items="overview.kpis" />
-      </div>
-      <FeatureStrip :items="overview.features" />
-      <section class="work-panel">
-        <h2>运营任务流</h2>
-        <OperationsTable :records="overview.records" />
-      </section>
-    </section>
+
+    <div class="page-crumb">当前位置：{{ currentLabel }}</div>
+
+    <OverviewView v-if="currentPath === '/'" />
+    <SessionsView v-else-if="currentPath === '/sessions'" />
   </main>
 </template>

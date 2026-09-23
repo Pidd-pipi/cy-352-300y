@@ -5,5 +5,6 @@ export const env = {
   dbName: process.env.DB_NAME ?? "app",
   dbUser: process.env.DB_USER ?? "app",
   dbPassword: process.env.DB_PASSWORD ?? "app_pwd",
+  databaseUrl: process.env.DATABASE_URL ?? "",
   jwtSecret: process.env.JWT_SECRET ?? "change_me",
 };

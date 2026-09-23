@@ -11,8 +11,8 @@ export const localFeatures: FeatureItem[] = [
   {
     "id": 2,
     "title": "组局拼车与缺人招募",
-    "description": "玩家发起组局（选择桌游、时间、人数），发布到拼车广场招募队友，其他玩家可报名加入，满员后自动锁定。",
-    "status": "排期中",
+    "description": "玩家发起组局（选择桌游、时间、人数），发布到拼车广场招募队友，其他玩家可报名加入，满员后自动进入候补队列，有人退出时队首自动转正。",
+    "status": "已上线",
     "metric": "31 单"
   },
   {
@@ -78,9 +78,9 @@ export const operationRecords: OperationRecord[] = [
     "key": "lpboardgame-2",
     "name": "组局拼车与缺人招募",
     "owner": "管理员",
-    "status": "排期中",
+    "status": "已上线",
     "metric": "31 单",
-    "priority": "中"
+    "priority": "高"
   },
   {
     "key": "lpboardgame-3",
